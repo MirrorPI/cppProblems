@@ -1,7 +1,7 @@
-select b.category, sum(s.sales) as total_sales
-from book b
-inner join book_sales s
-on b.book_id = s.book_id
-where s.sales_date >= '2022-01-01' and s.sales_date < '2022-02-01'
-group by b.category
-order by b.category asc
+SELECT b.category, SUM(bs.sales) AS total_sales
+FROM book b
+INNER JOIN book_sales bs
+ON b.book_id = bs.book_id
+WHERE DATE_FORMAT(bs.sales_date, '%Y-%m') = '2022-01'
+GROUP BY b.category
+ORDER BY b.category ASC;
